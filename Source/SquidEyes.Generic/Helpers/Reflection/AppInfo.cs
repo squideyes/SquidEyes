@@ -28,11 +28,19 @@ namespace SquidEyes.Generic
         public string Company { get; private set; }
         public string Product { get; private set; }
 
-        public string GetTitle()
+        public string GetTitle(string extraInfo = null)
         {
             var sb = new StringBuilder();
 
             sb.Append(Product);
+
+            if (!string.IsNullOrWhiteSpace(extraInfo))
+            {
+                sb.Append(" (");
+                sb.Append(extraInfo);
+                sb.Append(')');
+            }
+
             sb.Append(" v");
             sb.Append(Version.Major);
             sb.Append('.');
