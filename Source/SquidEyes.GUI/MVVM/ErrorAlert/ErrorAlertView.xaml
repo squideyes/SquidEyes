@@ -1,0 +1,116 @@
+﻿<dx:DXWindow
+    x:Class="SquidEyes.GUI.ErrorAlertView"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:dx="http://schemas.devexpress.com/winfx/2008/xaml/core"
+    Title="{Binding Title}"
+    xmlns:dxlc="http://schemas.devexpress.com/winfx/2008/xaml/layoutcontrol"
+    xmlns:dxe="http://schemas.devexpress.com/winfx/2008/xaml/editors"
+    mc:Ignorable="d"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    xmlns:local="clr-namespace:SquidEyes.GUI"
+    SizeToContent="WidthAndHeight"
+    WindowStartupLocation="CenterScreen"
+    ResizeMode="NoResize"
+    ShowIcon="False"
+    Icon="{Binding AppIcon}">
+    <Grid>
+        <dxlc:LayoutControl
+            Orientation="Vertical"
+            Width="460"
+            StretchContentVertically="False">
+            <dxlc:LayoutGroup
+                Header="What Happened"
+                View="GroupBox">
+                <TextBlock
+                    TextWrapping="Wrap">
+                    <Bold>An error was detected and logged</Bold>!                 
+                    The error may have been caused by one or more of the following: 
+                    data corruption, a software bug, security constraints,
+                    firewall settings, system issues, networking problems, etc.</TextBlock>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup
+                Visibility="{Binding PositionAndOrderVisibility}"
+                Header="Verify Your Positions &amp; Orders"
+                View="GroupBox">
+                <TextBlock
+                    TextWrapping="Wrap"><Run
+                        Text="If you were in one or more trades you need to " /><Bold><Span
+                            Foreground="Maroon"><Run
+                                Text="contact your broker to verify that your positions and orders are as you expect!" /></Span></Bold></TextBlock>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup
+                Header="What Happens Next"
+                View="GroupBox">
+                <TextBlock
+                    TextWrapping="Wrap"><Bold><Run
+                            Text="The application will shut down" /></Bold><Run
+                        Text=" as soon as you close this dialog! Depending upon the specifics of the error the application may be unusable until the root cause(s) of the error are resolved by customer support." /></TextBlock>
+            </dxlc:LayoutGroup>
+            <dxlc:LayoutGroup
+                Header="Contact Customer Support"
+                View="GroupBox">
+                <TextBlock
+                    TextWrapping="Wrap">   
+                    Click the
+                    "<Span
+                        FontWeight="Bold">Send Error Report</Span>" 
+                    button to send an error report to our customer support team, email us at 
+                    <Hyperlink
+                        Command="{Binding SupportEmailCommand}">
+                        <TextBlock
+                            Text="{Binding SupportInfo.Email}"
+                            FontWeight="Bold" />                      
+                        </Hyperlink>, call 
+                    <TextBlock
+                        Text="{Binding SupportInfo.Phone}"
+                        FontWeight="Bold" />, or for troubleshooting tips and our support forum visit 
+                    <Hyperlink
+                        Command="{Binding SupportWebsiteCommand}">
+                        <TextBlock
+                            Text="{Binding SupportInfo.Website}"
+                            FontWeight="Bold" />                      
+                        </Hyperlink>.
+                </TextBlock>
+            </dxlc:LayoutGroup>
+            <StackPanel
+                Orientation="Horizontal"
+                HorizontalAlignment="Center"
+                Grid.IsSharedSizeScope="True">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition
+                            Width="*"
+                            SharedSizeGroup="A" />
+                        <ColumnDefinition
+                            Width="Auto" />
+                        <ColumnDefinition
+                            Width="*"
+                            SharedSizeGroup="A" />
+                    </Grid.ColumnDefinitions>
+                    <Button
+                        Content="Error Details"
+                        Margin="2,0"
+                        Command="{Binding ErrorDetailsCommand}" />
+                    <Button
+                        Grid.Column="1"
+                        Margin="2,0"
+                        Command="{Binding SendErrorReportCommand}"
+                        IsDefault="True">
+                        <TextBlock>
+                        <Span
+                                Foreground="Maroon"
+                                FontWeight="Bold">Send Error Report</Span></TextBlock>
+                    </Button>
+                    <Button
+                        Grid.Column="2"
+                        Content="Close"
+                        Margin="2,0"
+                        Command="{Binding CloseCommand}"
+                        IsCancel="True" />
+                </Grid>
+            </StackPanel>
+        </dxlc:LayoutControl>
+    </Grid>
+</dx:DXWindow>
