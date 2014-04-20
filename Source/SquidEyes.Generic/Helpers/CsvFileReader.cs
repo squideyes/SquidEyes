@@ -1,29 +1,58 @@
 ﻿using System;
+using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using System.Diagnostics.Contracts;
 using System.IO;
-using System.Collections;
 
 namespace SquidEyes.Generic
 {
-    public class CsvFileReader: IEnumerable<string[]>
+    public class CsvFileReader : IEnumerable<string[]>, IDisposable
     {
         private StreamReader reader;
+        private int expectedFields;
+        private string nameOnly;
 
-        public CsvFileReader(string fileName)
+        public CsvFileReader(string fileName, int expectedFields)
         {
+            Contract.Requires(fileName.IsFileName());
+            Contract.Requires(expectedFields >= 1);
+
             reader = new StreamReader(fileName);
+
+            this.expectedFields = expectedFields;
+
+            nameOnly = Path.GetFileName(fileName);
+        }
+
+        public void Dispose()
+        {
+            if (reader != null)
+                reader.Close();
+
+            reader = null;
         }
 
         public IEnumerator<string[]> GetEnumerator()
         {
+            int lineNumber = 0;
+
             string line;
-            
+
             while ((line = reader.ReadLine()) != null)
-                yield return line.Split(',');
+            {
+                var fields = line.Split(',');
+
+                if (fields.Length != expectedFields)
+                {
+                    throw new Exception(string.Format(
+                        "Line {0:N} of \"{1}\" contained {2} fields, not {3} as expected!", 
+                        lineNumber, nameOnly, fields.Length, expectedFields));
+                }
+
+                lineNumber++;
+
+                yield return fields;
+            }
 
             yield return null;
         }

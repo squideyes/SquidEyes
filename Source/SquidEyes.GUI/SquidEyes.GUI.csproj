@@ -97,12 +97,10 @@
     <Compile Include="Converters\EnumToStringConverter.cs" />
     <Compile Include="Enums\FailReason.cs" />
     <Compile Include="Extenders\DispatcherExtenders.cs" />
-    <Compile Include="Extenders\DXWindowExtenders.cs" />
     <Compile Include="Extensions\EnumerationExtension.cs" />
     <Compile Include="EventArgs\NotifyArgs.cs" />
     <Compile Include="Helpers\BindingHelper.cs" />
     <Compile Include="Helpers\DelegateCommand.cs" />
-    <Compile Include="Helpers\ErrorManager.cs" />
     <Compile Include="Helpers\FlowDocumentPagePadding.cs" />
     <Compile Include="Helpers\Modal.cs" />
     <Compile Include="Helpers\UIDispatcher.cs" />
