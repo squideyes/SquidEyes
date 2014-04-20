@@ -128,6 +128,7 @@
     <Compile Include="Extenders\VersionExtenders.cs" />
     <Compile Include="Extenders\XElementExtenders.cs" />
     <Compile Include="Helpers\CRC32.cs" />
+    <Compile Include="Helpers\CsvFileReader.cs" />
     <Compile Include="Helpers\Reflection\AppInfo.cs" />
     <Compile Include="Helpers\Reflection\EnumHelper.cs" />
     <Compile Include="Helpers\XmlHelper.cs" />

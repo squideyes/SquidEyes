@@ -95,9 +95,6 @@
     <Compile Include="Converters\AbstractConverter.cs" />
     <Compile Include="Converters\ComboItemConverter.cs" />
     <Compile Include="Converters\EnumToStringConverter.cs" />
-    <Compile Include="Dialogs\WaitAndDoDialog.xaml.cs">
-      <DependentUpon>WaitAndDoDialog.xaml</DependentUpon>
-    </Compile>
     <Compile Include="Enums\FailReason.cs" />
     <Compile Include="Extenders\DispatcherExtenders.cs" />
     <Compile Include="Extenders\DXWindowExtenders.cs" />
@@ -111,16 +108,6 @@
     <Compile Include="Helpers\UIDispatcher.cs" />
     <Compile Include="Interfaces\IAbstractModel.cs" />
     <Compile Include="Interfaces\IDispatcher.cs" />
-    <Compile Include="MVVM\ErrorAlert\ErrorAlertModel.cs" />
-    <Compile Include="MVVM\ErrorAlert\ErrorAlertView.xaml.cs">
-      <DependentUpon>ErrorAlertView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\ErrorAlert\ErrorAlertViewModel.cs" />
-    <Compile Include="MVVM\ErrorReport\ErrorReportModel.cs" />
-    <Compile Include="MVVM\ErrorReport\ErrorReportView.xaml.cs">
-      <DependentUpon>ErrorReportView.xaml</DependentUpon>
-    </Compile>
-    <Compile Include="MVVM\ErrorReport\ErrorReportViewModel.cs" />
     <Compile Include="Primatives\ErrorAlert.cs" />
     <Compile Include="Primatives\ErrorReport.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -146,20 +133,6 @@
       <Generator>ResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-  </ItemGroup>
-  <ItemGroup>
-    <Page Include="Dialogs\WaitAndDoDialog.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\ErrorAlert\ErrorAlertView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
-    <Page Include="MVVM\ErrorReport\ErrorReportView.xaml">
-      <Generator>MSBuild:Compile</Generator>
-      <SubType>Designer</SubType>
-    </Page>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
