@@ -53,8 +53,6 @@ namespace SquidEyes.Generic
 
                 yield return fields;
             }
-
-            yield return null;
         }
 
         IEnumerator IEnumerable.GetEnumerator()
